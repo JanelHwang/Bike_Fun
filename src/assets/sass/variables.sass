@@ -1,6 +1,6 @@
 $noto-sans: 'Noto Sans TC',sans-serif
 $font-weight-default: 400
-$font-weight-bold: 900
+$font-weight-bold: 700
 $font-size: 20px
 
 //Primary theme
@@ -39,6 +39,41 @@ $grey-900: #262626
 
 .dark-color
     color: $theme-dark
+
+.primary-bg
+    background-color: $theme-primary
+    
+.light-bg
+    background-color: $theme-light
+
+.dark-bg
+    background-color: $theme-dark
+
+.btn
+    font-size: 16px
+    font-weight: $font-weight-bold
+    letter-spacing: 1px
+
+.primary-btn    
+    background-color: $theme-primary
+    border-color: $theme-primary
+    &:hover
+        background-color: lighten($theme-primary, 10%)
+        border-color: lighten($theme-primary, 10%)
+
+.light-btn
+    background-color: $theme-light
+    border-color: $theme-light
+    &:hover
+        background-color: darken($theme-light, 10%)
+        border-color: darken($theme-light, 10%)
+
+.dark-btn
+    background-color: $theme-dark
+    border-color: $theme-dark
+    &:hover
+        background-color: lighten($theme-dark, 10%)
+        border-color: lighten($theme-dark, 10%)
 *
     font-family: $noto-sans
     color: $grey-900
@@ -54,36 +89,46 @@ h1,h2,h3,h4,h5,h6
     line-height: 1.5
 
 @mixin fontsize($fz)
-    font-size: $fz + px
+    font-size: $fz + rem
+
+html
+    font-size: 20px  
     
+@media (max-width: 768px)
+    html
+        font-size: 18px
+
+@media (max-width: 576px)
+    html        
+        font-size: 14px
 h1
-    +fontsize(40)
+    +fontsize(2)
 h2
-    +fontsize(32)
+    +fontsize(1.6)
 h3
-    +fontsize(28)
+    +fontsize(1.4)
 h4
-    +fontsize(24)
+    +fontsize(1.2)
 h5
-    +fontsize(20)
+    +fontsize(1)
 
 .title
-    +fontsize(18)
+    +fontsize(0.9)
 
 .subtilte
-    +fontsize(16)
+    +fontsize(0.8)
 
 .subtilte-2
-    +fontsize(14)
+    +fontsize(0.7)
 
 .body-1
-    +fontsize(16)
+    +fontsize(0.8)
 
 .body-2
-    +fontsize(14)
+    +fontsize(0.7)
 
 .body-3
-    +fontsize(12)
+    +fontsize(0.6)
     
 .bg
     width: 100%
@@ -110,4 +155,37 @@ h5
     .bg-block-l
         display: none
         direction: 1s
-    
+
+.nav-link
+    font-size: 16px
+.input-item
+    position: relative
+    border-top-left-radius: 4px
+    border-bottom-left-radius: 4px
+    img
+        z-index: 1
+        position: absolute
+        top: 50%
+        left: calc( (36px - 20px) / 2)  
+        transform: translateY(-50%)
+
+.form-control
+    border: solid 1px $theme-primary
+    font-size: 16px
+
+input.search
+    font-family: $noto-sans
+    border: solid 1px $theme-primary
+    padding-left: 36px
+    background-color: $grey-100 !important
+    &::placeholder 
+        border-left: solid 1px $grey-300
+        padding-left: 4px
+        color: $grey-500
+
+.biker-bar
+    max-height: 186px
+
+@media (max-width: 768px)
+    .biker-bar
+        max-height: 115px
