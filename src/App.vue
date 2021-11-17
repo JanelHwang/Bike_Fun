@@ -27,11 +27,11 @@
               <div class="w-50 pr-2 pl-0">
                 <div class="form-group mb-0">
                   <select class="form-control w-100 align-middle">
-                    <option selected>縣市</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                    <option>選擇縣市</option>
+                    <option>台北市</option>
+                    <option>新北市</option>
+                    <option>桃園市</option>
+                    <option>新竹市</option>
                   </select>
                 </div>
               </div>
