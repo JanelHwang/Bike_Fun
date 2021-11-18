@@ -7,7 +7,43 @@
 }
 
 .dark-color {
-  color: #0A4259;
+  color: #cad3d6;
+}
+
+.grey-100 {
+  color: #F6F6F6;
+}
+
+.grey-200 {
+  color: #F1F1F1;
+}
+
+.grey-300 {
+  color: #E5E5E5;
+}
+
+.grey-400 {
+  color: #C3C3C3;
+}
+
+.grey-500 {
+  color: #A5A5A5;
+}
+
+.grey-600 {
+  color: #7B7B7B;
+}
+
+.grey-700 {
+  color: #676767;
+}
+
+.grey-800 {
+  color: #484848;
+}
+
+.grey-900 {
+  color: #262626;
 }
 
 .primary-bg {
@@ -19,7 +55,7 @@
 }
 
 .dark-bg {
-  background-color: #0A4259;
+  background-color: #cad3d6;
 }
 
 .btn {
@@ -47,12 +83,12 @@
 }
 
 .dark-btn {
-  background-color: #0A4259;
-  border-color: #0A4259;
+  background-color: #cad3d6;
+  border-color: #cad3d6;
 }
 .dark-btn:hover {
-  background-color: #0f6487;
-  border-color: #0f6487;
+  background-color: #e7ebec;
+  border-color: #e7ebec;
 }
 
 * {
@@ -135,6 +171,7 @@ h5 {
 .bg {
   width: 100%;
   height: 100%;
+  min-height: auto;
 }
 
 .bg-block-r {
@@ -180,15 +217,6 @@ h5 {
   transform: translateY(-50%);
 }
 
-select {
-  text-align: center !important;
-  text-align-last: center !important;
-}
-select option {
-  text-align: center;
-  line-height: 1.5;
-}
-
 .form-control {
   border: solid 1px #0E5978;
   font-size: 16px;
@@ -214,4 +242,11 @@ input.search::placeholder {
   .biker-bar {
     max-height: 115px;
   }
+}
+.search-result {
+  width: 396px;
+  height: 100%;
+  padding: 24px;
+  position: absolute;
+  z-index: 1000;
 }

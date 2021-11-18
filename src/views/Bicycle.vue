@@ -1,13 +1,12 @@
 <template>
   <Navbar></Navbar>
-    <div class="search-result justify-content-start">
+    <div class="search-result bg-light">
         <div class="search-container">
-            <div class="card search-card box-shadow card-header">
-                <div class="card-head w-100 active">
-                    <h2>尋找單車</h2><i class="fas fa-chevron-down pl-2"></i>
-                </div>
-                <div class="card-body">
-                    <form>
+            <div class="card search-card box-shadow border-0">
+                <div class="card-header primary-bg"></div>
+                <div class="card-body text-left m-0"> 
+                  <div class="d-inline title primary-color">尋找單車<i class="fas fa-chevron-down pl-2 fz-16" style="vertical-align:middle;"></i></div>
+                    <form class="mt-2">
                         <label class="input-item w-100" style="margin-bottom: 12px;">
                         <img src="../../assets/images/svg/search-icon.svg" alt="search" width="20" height="20">
                         <input type="text" class="form-control search" placeholder="輸入關鍵字" aria-label="Username" aria-describedby="basic-addon1">
@@ -32,59 +31,161 @@
                 </div>
             </div>
         </div>
-        <div class="search-container">
-            <div class="result-card card">
-                <h5></h5>
-                <div class="bike-site">
-
-                </div>
+        <div class="search-container border-top bg-light">
+            <div class="result-card card my-2 px-3 py-2 text-left">
+                <h5>iBike1.0_頂何厝</h5>
+                <div class="d-inline primary-color fz-14 grey-800"><i class="fas fa-map-marker-alt primary-color pr-2" style="vertical-align:base;"></i>臺灣大道二段/東興路三段路口</div>
                 <div class="bike-state">
                     <div class="badge  bg-primary">正常營運</div>
                 </div>
             </div>
         </div>
     </div>
-    <l-map style="height:100vh">
-        <l-geo-json :geojson="geojson" :options="geojsonOptions" />
+    <l-map
+      v-model="zoom"
+      v-model:zoom="zoom"
+      :center="[47.41322, -1.219482]"
+      @move="log('move')"
+      style="height: 100vh;"
+    >
+      <l-tile-layer
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      ></l-tile-layer>
+      <l-control-layers />
+      <l-marker :lat-lng="[0, 0]" draggable @moveend="log('moveend')">
+        <l-tooltip>
+          lol
+        </l-tooltip>
+      </l-marker>
+
+      <l-marker :lat-lng="[47.41322, -1.219482]">
+        <l-icon :icon-url="iconUrl" :icon-size="iconSize" />
+      </l-marker>
+
+      <l-marker :lat-lng="[50, 50]" draggable @moveend="log('moveend')">
+        <l-popup>
+          lol
+        </l-popup>
+      </l-marker>
+
+      <l-polyline
+        :lat-lngs="[
+          [47.334852, -1.509485],
+          [47.342596, -1.328731],
+          [47.241487, -1.190568],
+          [47.234787, -1.358337],
+        ]"
+        color="green"
+      ></l-polyline>
+      <l-polygon
+        :lat-lngs="[
+          [46.334852, -1.509485],
+          [46.342596, -1.328731],
+          [46.241487, -1.190568],
+          [46.234787, -1.358337],
+        ]"
+        color="#41b782"
+        :fill="true"
+        :fillOpacity="0.5"
+        fillColor="#41b782"
+      />
+      <l-rectangle
+        :lat-lngs="[
+          [46.334852, -1.509485],
+          [46.342596, -1.328731],
+          [46.241487, -1.190568],
+          [46.234787, -1.358337],
+        ]"
+        :fill="true"
+        color="#35495d"
+      />
+      <l-rectangle
+        :bounds="[
+          [46.334852, -1.190568],
+          [46.241487, -1.090357],
+        ]"
+      >
+        <l-popup>
+          lol
+        </l-popup>
+      </l-rectangle>
     </l-map>
+
 </template>
 
 <script>
-import "leaflet/dist/leaflet.css"
-import { LMap, LGeoJson } from "@vue-leaflet/vue-leaflet";
+
+import {  
+  LMap,
+  LIcon,
+  LTileLayer,
+  LMarker,
+  LControlLayers,
+  LTooltip,
+  LPopup,
+  LPolyline,
+  LPolygon,
+  LRectangle } from "@vue-leaflet/vue-leaflet";
+import "leaflet/dist/leaflet.css";
 import Navbar from '../components/Navbar.vue';
 export default {
   name: 'Bicycle',
   components: { 
-        Navbar,
-        LMap,
-        LGeoJson,
-    },
-      data() {
+      Navbar,
+      LMap,
+      LIcon,
+      LTileLayer,
+      LMarker,
+      LControlLayers,
+      LTooltip,
+      LPopup,
+      LPolyline,
+      LPolygon,
+      LRectangle,
+  },
+  data() {
     return {
-      geojson: null,
-      geooptions: {
-        style: {
-          color: "#ff7800",
-          weight: 8,
-          opacity: 0.8,
-          //dashArray: 15,
-        },
-      },
-      geojsonOptions: {
-        // Options that don't rely on Leaflet methods.
-      },
+      zoom: 2,
+      iconWidth: 25,
+      iconHeight: 40,
     };
   },
-  async beforeMount() {
-    // HERE is where to load Leaflet components!
-    const { circleMarker } = await import("leaflet/dist/leaflet-src.esm");
-
-    // And now the Leaflet circleMarker function can be used by the options:
-    this.geojsonOptions.pointToLayer = (feature, latLng) =>
-      circleMarker(latLng, { radius: 8 });
-    this.mapIsReady = true;
+  computed: {
+    iconUrl() {
+      return `https://placekitten.com/${this.iconWidth}/${this.iconHeight}`;
+    },
+    iconSize() {
+      return [this.iconWidth, this.iconHeight];
+    },
   },
-}
+  methods: {
+    log(a) {
+      console.log(a);
+    },
+    changeIcon() {
+      this.iconWidth += 2;
+      if (this.iconWidth > this.iconHeight) {
+        this.iconWidth = Math.floor(this.iconHeight / 2);
+      }
+    },
+  },
+};
 </script>
 
+<style scoped>
+
+.title {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+.fz-16 {
+  font-size: 16px;
+}
+.fz-14 {
+  font-size: 14px;
+}
+.card-body {
+  padding: 0.8rem !important;
+}
+
+</style>
