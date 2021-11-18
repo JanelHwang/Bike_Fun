@@ -1,3 +1,4 @@
+
 import '@babel/polyfill'
 import 'mutationobserver-shim'
 import 'bootstrap'
@@ -6,8 +7,10 @@ import 'jquery/dist/jquery.js'
 import 'popper.js/dist/popper.js'
 import '../assets/css/variables.css'
 import { createApp } from 'vue'
-
 import App from './App.vue'
-export const eventBus = createApp(App)
+import router from './router'
 
-createApp(App).mount('#app')
+
+export const eventBus = createApp(App).use(router)
+
+createApp(App).use(router).mount('#app')

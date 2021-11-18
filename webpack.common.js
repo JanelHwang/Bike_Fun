@@ -1,6 +1,6 @@
 // ./webpack.common.js
 
-const path = require('path');
+// const path = require('path');
 // 新增
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
