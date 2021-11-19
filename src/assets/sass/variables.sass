@@ -6,7 +6,8 @@ $font-size: 20px
 //Primary theme
 $theme-primary: #0E5978
 $theme-light: #12749D
-$theme-dark: #cad3d6
+$theme-dark: #0A4259
+$theme-tint: #F0F9FC
  
 //Notify
 $red-default: #CC1010
@@ -59,6 +60,25 @@ $grey-900: #262626
 .grey-900
     color: $grey-900
 
+.grey-100-bg
+    background-color: $grey-100
+.grey-200-bg
+    background-color: $grey-200
+.grey-300-bg
+    background-color: $grey-300
+.grey-400-bg
+    background-color: $grey-400
+.grey-500-bg
+    background-color: $grey-500
+.grey-600-bg
+    background-color: $grey-600
+.grey-700-bg
+    background-color: $grey-700
+.grey-800-bg
+    background-color: $grey-800
+.grey-900-bg
+    background-color: $grey-900
+
 .primary-bg
     background-color: $theme-primary
     
@@ -96,7 +116,7 @@ $grey-900: #262626
 *
     font-family: $noto-sans
     color: $grey-900
-
+    letter-spacing: 1px
 h1,h2,h3,h4,h5,h6
     line-height: 1.25
     font-weight: $font-weight-bold
@@ -179,7 +199,13 @@ h5
 
 .nav-link
     font-size: 16px
-    
+
+.nav-link-active
+  color: #fff
+  background: #0E5978
+  &:hover
+      color: darken(#cecece,0.4 )
+ 
 .input-item
     position: relative
     border-top-left-radius: 4px
@@ -219,4 +245,33 @@ input.search
     padding: 24px
     position: absolute
     z-index: 1000
+
+.search-container.scroll
+    height: calc(100% - 300px)
+    overflow-y: auto
+
+.badge
+    font-size: 14px
+    line-height: 21px
+    padding: 4px 8px
+    font-weight: $font-weight-default
+.badge-none
+    color: $grey-600
+    background-color: $grey-300
+    border: solid 1px $grey-600
+
+.badge-primary
+    color: $theme-dark !important
+    background-color: $theme-tint !important
+    border: solid 1px $theme-dark !important
+
+.badge-danger
+    color: $red-default !important
+    background-color: $red-light !important
+    border: solid 1px $red-default !important
+
+.badge-warning
+    color: $orange-default !important
+    bgc: $orange-light !important
+    border: solid 1px $orange-default !important
 
