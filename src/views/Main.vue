@@ -3,7 +3,7 @@
   <div class="bg text-left">
     <div class="bg-block-r"></div>
     <div class="bg-block-l"></div> 
-    <div class="container my-3  align-content-sm-between flex-wrap">
+    <div class="container my-3 align-content-sm-between flex-wrap">
       <div class="search-form py-5 d-flex justify-content-lg-start justify-content-center">
         <div class="col-lg-6 col-md-8 col-12">
           <img src="../../assets/images/svg/logo.svg" class="mt-4 mb-4" alt="Bike fun" width="275" height="118">
@@ -18,10 +18,7 @@
                 <div class="form-group mb-0">
                   <select class="form-control w-100 align-middle">
                     <option>--選擇縣市--</option>
-                    <option>台北市</option>
-                    <option>新北市</option>
-                    <option>桃園市</option>
-                    <option>新竹市</option>
+                    <option v-for="city in cities" :value="city.value" :key="city.city">{{ city.city }}</option>
                   </select>
                 </div>
               </div>
@@ -49,10 +46,16 @@
 
 <script>
 import Navbar from '../components/Navbar.vue';
+import Cities from '../../assets/json/cityName.json';
 
 export default {
   name: 'Main',
-  components: { Navbar }
+  components: { Navbar },
+  computed: {
+    cities() {
+      return Cities;
+    },
+  },
 }
 </script>
 

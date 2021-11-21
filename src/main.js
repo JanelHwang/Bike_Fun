@@ -9,8 +9,12 @@ import '../assets/css/variables.css'
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+
+export const app = createApp(App).use(router,axios,VueAxios)
 
 
-export const eventBus = createApp(App).use(router)
+app.config.productionTip = false
 
-createApp(App).use(router).mount('#app')
+app.mount('#app')
