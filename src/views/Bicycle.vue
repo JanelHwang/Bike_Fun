@@ -70,7 +70,7 @@
 </template>
 
 <script>
-import { ref} from 'vue';
+import { ref } from 'vue';
 import { 
   LMap, 
   LTileLayer,
