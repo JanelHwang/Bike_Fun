@@ -357,7 +357,7 @@ input.search::placeholder {
 
 .badge-warning {
   color: #EB8F05 !important;
-  bgc: #F5E6D0 !important;
+  background-color: #F5E6D0 !important;
   border: solid 1px #EB8F05 !important;
 }
 /*# sourceMappingURL=variables.css.map */
