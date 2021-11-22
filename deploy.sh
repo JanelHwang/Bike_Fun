@@ -12,6 +12,6 @@ git add -A
 
 git commit -m 'update deploy'
 
-git push -f git@github.com:JanelHwang/Bike_Fun.git master:gh-pages
+git push -f https://github.com/JanelHwang/Bike_Fun.git master:gh-pages
 
 cd -
